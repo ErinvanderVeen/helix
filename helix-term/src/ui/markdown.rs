@@ -22,7 +22,7 @@ use helix_view::{
 fn styled_multiline_text<'a>(text: &str, style: Style) -> Text<'a> {
     let spans: Vec<_> = text
         .lines()
-        .map(|line| Span::styled(line.to_string(), style))
+        .map(|line| Span::styled(line.replace('\t', "    "), style))
         .map(Spans::from)
         .collect();
     Text::from(spans)
